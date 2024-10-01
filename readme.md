@@ -17,3 +17,8 @@ run container
 docker run -it passenger_mock
 
 `
+
+
+Run Gunicorn with 
+
+gunicorn --bind 0.0.0.0:8080
