@@ -26,7 +26,14 @@ VALUES (?, ?, ?, ?)
     ('Jane Smith', '221 Strawberry St', '6/20/1995','AA002'),
     ('Alice Johnson', '212 Orange Ct', '7/20/2000', 'AA03')
 ])
-
-# Commit the changes and close the connection
+cur.execute('''
+CREATE TABLE IF NOT EXISTS Transactions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    route TEXT
+)'''
+)
 conn.commit()
 conn.close()
+
+
+

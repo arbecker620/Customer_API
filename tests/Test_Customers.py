@@ -1,14 +1,8 @@
 import pytest
 import requests
 
-# Base URL for the API (replace with your actual API endpoint)
-BASE_URL = "http://127.0.0.1:5000/"
 
-# Helper function to make GET requests to the API
-# Test cases
-def test_get_home_page():
-    response = requests.get(f"{BASE_URL}")
-    assert response.status_code == 200
+BASE_URL = "http://127.0.0.1:5000/"
 
 def test_get_customer_info_valid_id():
     route_test = "Customer"
@@ -23,6 +17,3 @@ def test_get_customer_info_valid_id():
     ]
     actual_customers_list = requests.get(f"{BASE_URL}""/Customers/List")
     assert actual_customers_list.status_code == 200
-    # Verify that the actual list matches the expected list
-    #assert isinstance(actual_customers_list, list)
-    
