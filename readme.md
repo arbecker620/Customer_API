@@ -1,16 +1,18 @@
 # Customer API
-
+This is a customer API i built to use for testing different patterns or solutions. I am hosting some self hoster github runners on a raspberry pi. This rspberry pi is being used to host the the flask Customer APi.
 
 
 # Getting Started
+The following software is required to get started. I am using docker to do development and for usage on my raspberry pi. The raspberry pi 3b+ is running on my home network. 
 
-buidl container 
+
+I have been running the following commands in docker to build the container 
 `
 docker build -t passenger_mock .
 
 `
 
-
+The following command is whjat I am using to run the docker container in interactive mode. 
 run container 
 
 `
