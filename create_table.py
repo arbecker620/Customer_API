@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Customer (
     Customer_ID TEXT NOT NULL
 )
 ''')
-
+ 
 # Insert some sample data
 cur.executemany('''
 INSERT INTO Customer (name, address, Date_of_Birth, Customer_ID)

@@ -21,7 +21,7 @@ def get_db_connection(table):
     conn = sqlite3.connect(table)
     conn.row_factory = sqlite3.Row
     return conn
-
+ 
 
 """
 def create_app():
