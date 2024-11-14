@@ -1,5 +1,5 @@
 # Customer API
-This is a customer API i built to use for testing different patterns or solutions. I am hosting some self hoster github runners on a raspberry pi. This rspberry pi is being used to host the the flask Customer APi.
+This is a customer API i built to use for testing different patterns or solutions. I am utlizing self hosted github runners on a raspberry pi. This rspberry pi is being used to host the the flask Customer APi.
 
 
 # Getting Started

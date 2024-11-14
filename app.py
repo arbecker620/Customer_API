@@ -2,11 +2,18 @@ from flask import Flask, request, jsonify, make_response, redirect, g
 import sqlite3
 # Create a Flask app
 app = Flask(__name__)
+
+
 from os import environ
 import time
 from flask_caching import Cache
 import redis
+import uuid
+from blueprints.Customers import Customer
 
+
+
+app.register_blueprint()
 cache = redis.Redis(host='redis', port=6379)
 
 def get_db_connection(table):
@@ -97,7 +104,7 @@ def get_transactions_list():
     rows = cur.fetchall()
     print(rows)
     if rows is None:
-        return jsonify({"error": "Customer not found"}), 404
+        return jsonify({"error": "No Transactions"}), 404
     
     # Convert rows to a list of dictionaries
     transactions = [dict(row) for row in rows]
@@ -107,7 +114,7 @@ def get_transactions_list():
     
     return jsonify(transactions)
 
-@app.route('/Customer/<int:id>', methods=['GET'])
+@app.route('/Customer/<str:id>', methods=['GET'])
 def get_customer(id):
     conn = get_db_connection('Customer.db')
     cur = conn.cursor()
@@ -142,7 +149,7 @@ def create_customer():
 
     conn = get_db_connection('Customer.db')
     cur = conn.cursor()
-    customerid = 'AA004'
+    customerid = str(uuid.uuid1())
 
     cur.execute('''INSERT INTO Customer (name, address, Date_of_Birth, Customer_ID)
         VALUES (?, ?, ?, ?)
@@ -154,6 +161,6 @@ def create_customer():
 
 # Run the app if this script is executed directly
 if __name__ == '__main__':
-	#app.run(host='0.0.0.0')
-    app.run(debug=True)
+	app.run(host='0.0.0.0')
+    #app.run(debug=True)
     #create_app()

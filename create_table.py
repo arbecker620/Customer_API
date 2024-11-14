@@ -22,9 +22,9 @@ cur.executemany('''
 INSERT INTO Customer (name, address, Date_of_Birth, Customer_ID)
 VALUES (?, ?, ?, ?)
 ''', [
-    ('John Doe', '122 Blueberry Ln', '6/20/1990', 'AA001'),
-    ('Jane Smith', '221 Strawberry St', '6/20/1995','AA002'),
-    ('Alice Johnson', '212 Orange Ct', '7/20/2000', 'AA03')
+    ('John Doe', '122 Blueberry Ln', '6/20/1990', 'bc349b6a-a176-11ef-91be-0242ac110002'),
+    ('Jane Smith', '221 Strawberry St', '6/20/1995','bc34a042-a176-11ef-91be-0242ac110002'),
+    ('Alice Johnson', '212 Orange Ct', '7/20/2000', 'bc34a1a0-a176-11ef-91be-0242ac110002')
 ])
 cur.execute('''
 CREATE TABLE IF NOT EXISTS Transactions (
