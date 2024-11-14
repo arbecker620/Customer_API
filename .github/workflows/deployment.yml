@@ -31,4 +31,7 @@ jobs:
       - name: Create new 
         run:  |
           docker build -t customer_api .
+      - name: run flask app
+        run:  |
+          docker run passenger_mock
           
