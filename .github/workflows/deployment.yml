@@ -32,6 +32,4 @@ jobs:
         run:  |
           docker build -t customer_api .
 
-          docker run passenger_mock
-
           
