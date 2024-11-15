@@ -13,3 +13,4 @@ packaging==24.1
 redis==5.0.8
 Werkzeug==3.0.3
 zipp==3.20.0
+requests
