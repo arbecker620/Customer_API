@@ -9,11 +9,11 @@ import time
 from flask_caching import Cache
 import redis
 import uuid
-from blueprints.Customers import Customer
+#from blueprints.Customers import Customer
 
 
 
-app.register_blueprint()
+#app.register_blueprint()
 cache = redis.Redis(host='redis', port=6379)
 
 def get_db_connection(table):
@@ -114,7 +114,7 @@ def get_transactions_list():
     
     return jsonify(transactions)
 
-@app.route('/Customer/<str:id>', methods=['GET'])
+@app.route('/Customer/<string:id>', methods=['GET'])
 def get_customer(id):
     conn = get_db_connection('Customer.db')
     cur = conn.cursor()
