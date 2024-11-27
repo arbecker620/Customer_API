@@ -28,17 +28,11 @@ jobs:
       - uses: actions/checkout@v2
 
       # Setup virtual env, install dependencies
-      - name: Build Docker Container for Customer Api
+      - name: Build Test Docker Container for Customer API
         run:  |
-          docker build -t customer_api .
- 
-      - name: start container
-        run: |
-          docker run -it passenger_mock
+          docker build --build-arg BUILD_ENV=ci-testing -t customer_api:testing .
 
-      - name: run tests
-        run: |
-          pip install pytest
-          cd test
-          pytest Test_app.py
-          
+      - name: clear testing Constainer
+        run:  |
+          docker rmi -f $(docker images -f=reference='customer_api:testing' --format "{{.ID}}")
+ 
