@@ -31,6 +31,14 @@ jobs:
       - name: Build Test Docker Container for Customer API
         run:  |
           docker build --build-arg BUILD_ENV=ci-testing -t customer_api:testing .
+        
+      - name: Run Tests 
+        run: |
+          docker run customer_mock:testing
+
+      - name: Get Test Results
+        run: |
+          echo ls
 
       - name: clear testing Constainer
         run:  |
