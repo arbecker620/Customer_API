@@ -38,7 +38,7 @@ jobs:
 
       - name: Get Test Results
         run: |
-          echo ls
+          docker tests -t customer_api:testing
 
       - name: clear testing Constainer
         run:  |
