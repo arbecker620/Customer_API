@@ -34,7 +34,7 @@ jobs:
         
       - name: Run Tests 
         run: |
-          docker run customer_mock:testing
+          docker run customer_api:testing
 
       - name: Get Test Results
         run: |
