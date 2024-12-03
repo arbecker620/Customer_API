@@ -23,7 +23,7 @@ RUN if [ "$ENV_VAR" = "dev" ]; then \
     elif [ "$ENV_VAR" = "ci-testing" ]; then \
         pip install --upgrade pip && \
         pip install pytest; \
-        python3 app.py && \
+        #python3 app.py && \
         pytest tests/ ; \
         fi
 
