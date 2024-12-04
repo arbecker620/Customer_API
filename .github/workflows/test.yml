@@ -30,15 +30,11 @@ jobs:
       # Setup virtual env, install dependencies
       - name: Build Test Docker Container for Customer API
         run:  |
-          docker build --build-arg BUILD_ENV=ci-testing -t customer_api:testing .
+          docker build -t customer_api:testing --target test .
         
       - name: Run Tests 
         run: |
           docker run customer_api:testing
-
-      - name: Get Test Results
-        run: |
-          docker tests -t customer_api:testing
 
       - name: clear testing Constainer
         run:  |
