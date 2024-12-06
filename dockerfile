@@ -9,7 +9,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 FROM base AS test
 RUN pip3 install pytest
 RUn python3 create_table.py
-ENTRYPOINT pytest tests/
+ENTRYPOINT pytest tests/test_application.py
 
 
 FROM base AS development

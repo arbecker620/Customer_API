@@ -9,12 +9,8 @@ import time
 from flask_caching import Cache
 import redis
 import uuid
-#from blueprints.Customers import Customer
 
 
-
-#app.register_blueprint()
-cache = redis.Redis(host='redis', port=6379)
 
 def get_db_connection(table):
 
@@ -22,21 +18,10 @@ def get_db_connection(table):
     conn.row_factory = sqlite3.Row
     return conn
  
-
-"""
 def create_app():
     app = Flask(__name__)
-    app.config['CACHE_TYPE'] = 'redis'
-    app.config['CACHE_REDIS_HOST'] = 'localhost'
-    app.config['CACHE_REDIS_PORT'] = 6379
-    app.config['CACHE_REDIS_DB'] = 0
-    # Initialize Flask-Caching with Redis
-    cache = Cache(app=app)
-    cache.init_app(app)
-    # Initialize Redis client
-    redis_client = redis.Redis(host='localhost', port=6379, db=0)
-    app.run(debug=True)
-"""
+    return app
+
 
 
 
@@ -158,9 +143,3 @@ def create_customer():
     conn.close()
     return jsonify({'Status': 'Customer Added'}), 200
 
-
-# Run the app if this script is executed directly
-if __name__ == '__main__':
-	#app.run(host='0.0.0.0', port=5000)
-    app.run(debug=True)
-    #create_app()
