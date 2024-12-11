@@ -8,7 +8,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   workflow_run:
     workflows: [test]
-    types: [completed]
+    types: 
+      - completed
     branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -17,7 +18,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  on-success:
     # The type of runner that the job will run on
     runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
@@ -30,5 +31,10 @@ jobs:
       - name: Build Container and Run App
         run:  |
           docker build -t customer_api:latest --target base .
+  on-failure:
+    runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The triggering workflow failed'
 
           
