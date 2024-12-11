@@ -7,7 +7,7 @@ name: Deploy to Raspberry Pi
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   workflow_run:
-    workflows: [test]
+    workflows: [Deploy Testing]
     types: 
       - completed
     branches: [main]
