@@ -12,13 +12,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-env:
-  FLASK_APP: app.py
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build Test Container:
     # The type of runner that the job will run on
     runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
 
@@ -31,13 +28,25 @@ jobs:
       - name: Build Test Docker Container for Customer API
         run:  |
           docker build -t customer_api:testing --target test .
-        
+
+  Run Test Container:
       - name: Run Tests 
         run: |
           docker run customer_api:testing
 
+  Clear Test Container:
       - name: clear testing Container
         if: always()
         run:  |
           docker rmi -f $(docker images -f=reference='customer_api:testing' --format "{{.ID}}")
+  Tag Container:
+      - name: tag container for remote
+        run: |
+        docker tag customer_api rpi4-rome.local:5000/customer_api:testing
+  Push Container:
+      - name: Push to Remote
+        run: |
+        docker push rpi4-rome.local:5000/customer_api:testing
+
+
  
