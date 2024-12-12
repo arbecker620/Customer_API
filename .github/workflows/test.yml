@@ -30,12 +30,14 @@ jobs:
           docker build -t customer_api:testing --target test .
 
   Run Test Container:
+    runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
     steps:
       - name: Run Tests 
         run: |
           docker run customer_api:testing
 
   Clear Test Container:
+    runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
     steps:
       - name: clear testing Container
         if: always()
