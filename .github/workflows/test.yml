@@ -42,11 +42,6 @@ jobs:
         run:  |
           docker rmi -f $(docker images -f=reference='customer_api:testing' --format "{{.ID}}")
 
-  Push Container:
-    steps:
-      - name: Push to Remote
-        run: |
-        docker push rpi4-rome.local:5000/customer_api:testing
 
 
  
