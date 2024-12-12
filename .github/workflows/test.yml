@@ -30,20 +30,26 @@ jobs:
           docker build -t customer_api:testing --target test .
 
   Run Test Container:
+    steps:
       - name: Run Tests 
         run: |
           docker run customer_api:testing
 
   Clear Test Container:
+    steps:
       - name: clear testing Container
         if: always()
         run:  |
           docker rmi -f $(docker images -f=reference='customer_api:testing' --format "{{.ID}}")
+
   Tag Container:
+    steps:
       - name: tag container for remote
         run: |
         docker tag customer_api rpi4-rome.local:5000/customer_api:testing
+
   Push Container:
+    steps:
       - name: Push to Remote
         run: |
         docker push rpi4-rome.local:5000/customer_api:testing
