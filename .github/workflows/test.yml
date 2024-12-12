@@ -15,7 +15,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build test:
+  build_test:
     # The type of runner that the job will run on
     runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
 
@@ -28,7 +28,7 @@ jobs:
       - name: Build Test Docker Container for Customer API
         run:  |
           docker build -t customer_api:testing --target test .
-          
+
       - name: Run Tests 
         run: |
           docker run customer_api:testing
