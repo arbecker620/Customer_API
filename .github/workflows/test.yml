@@ -28,11 +28,11 @@ jobs:
       - name: Build Test Docker Container for Customer API
         run:  |
           docker build -t customer_api:testing --target test .
- jobs:         
   run_tests:
       runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
+
       steps:
-      - name: Run CI_Tests 
+      - name: Run Tests 
         run: |
           docker run customer_api:testing
 
