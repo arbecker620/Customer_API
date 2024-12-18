@@ -29,6 +29,8 @@ jobs:
         run:  |
           docker build -t customer_api:testing --target test .
   run_tests:
+      needs: 
+        - build_test
       runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
 
       steps:
