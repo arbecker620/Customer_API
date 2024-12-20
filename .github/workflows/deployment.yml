@@ -20,7 +20,7 @@ jobs:
   # This workflow contains a single job called "build"
   on-success:
     # The type of runner that the job will run on
-    runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
+    runs-on: [self-hosted,  Linux,  ARM64,  build_server]
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,11 +28,16 @@ jobs:
       - uses: actions/checkout@v2
 
       # Setup virtual env, install dependencies
-      - name: Build Container and Run App
+      - name: Build Container and Push Repo
         run:  |
-          docker build -t customer_api:latest --target base .
+          
+          docker build -t customer_api:latest --target production .
+
+      - name: Push Container 
+        run: |
+          docker push rpi4-rome.local:5000/customer_api:latest
   on-failure:
-    runs-on: [self-hosted, Linux, ARM64, rpi3, testbuild]
+    runs-on: [self-hosted,  Linux,  ARM64,  build_server]
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
       - run: echo 'The triggering workflow failed'
