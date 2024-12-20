@@ -13,3 +13,5 @@ ENTRYPOINT pytest tests/
 
 FROM base AS development
 
+
+FROM base AS production 
