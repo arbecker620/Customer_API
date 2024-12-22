@@ -32,7 +32,8 @@ jobs:
       needs: 
         - build_test
       runs-on: [self-hosted,  Linux,  ARM64,  build_server]
-    steps:
+
+      steps:
       - name: Run Tests 
         run: |
           docker run customer_api:testing
