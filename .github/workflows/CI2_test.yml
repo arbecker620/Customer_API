@@ -18,7 +18,6 @@ jobs:
   build_test:
     # The type of runner that the job will run on
     runs-on: [self-hosted,  Linux,  ARM64,  build_server]
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Setup virtual env, install dependencies
@@ -29,7 +28,6 @@ jobs:
       needs: 
         - build_test
       runs-on: [self-hosted,  Linux,  ARM64,  build_server]
-
       steps:
       - name: Run Tests 
         run: |
@@ -38,19 +36,13 @@ jobs:
       needs:
         - run_tests
       runs-on: [self-hosted,  Linux,  ARM64,  build_server]
-
       steps:
       - name: Tag Image
         run: |
           docker image tag customer_api:prod rpi4-rome.local:5000/customer_api
-
-
       - name: Push Container 
         run: |
           docker images
-          
-        # docker push rpi4-rome.local:5000/customer_api:latest
-
   clear_containter:
       runs-on: [self-hosted,  Linux,  ARM64,  build_server]
       - name: clear testing Container
