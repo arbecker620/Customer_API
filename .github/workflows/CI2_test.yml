@@ -35,18 +35,24 @@ jobs:
         run: |
           docker run customer_api:testing
   push_image:
+      needs:
+        - run_tests
       runs-on: [self-hosted,  Linux,  ARM64,  build_server]
 
       steps:
       - name: Tag Image
         run: |
-          docker image tag customer_api:prod rpi4-rome.local:5000/customer_api:prod
+          docker image tag customer_api:prod rpi4-rome.local:5000/customer_api
 
 
       - name: Push Container 
         run: |
-          docker push rpi4-rome.local:5000/customer_api:prod
+          docker images
+          
+        # docker push rpi4-rome.local:5000/customer_api:latest
 
+  clear_containter:
+      runs-on: [self-hosted,  Linux,  ARM64,  build_server]
       - name: clear testing Container
         if: always()
         run:  |
