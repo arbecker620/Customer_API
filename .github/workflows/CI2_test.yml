@@ -37,7 +37,7 @@ jobs:
 
       - name: Push Container 
         run: |
-          docker push rpi4-rome.local:5000/customer_api:latest
+          docker push rpi4-rome.local:5000/customer_api:prod
 
       - name: clear testing Container
         if: always()

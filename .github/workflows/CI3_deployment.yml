@@ -27,14 +27,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
       # Setup virtual env, install dependencies
-      - name: Build Container and Push Repo
-        run:  |
-          
-          docker build -t customer_api:latest --target production .
-
-      - name: Push Container 
+      - name: Pull Container 
         run: |
-          docker push rpi4-rome.local:5000/customer_api:latest
+          docker pull rpi4-rome.local:5000/customer_api:prod
   on-failure:
     runs-on: [self-hosted,  Linux,  ARM64,  build_server]
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
