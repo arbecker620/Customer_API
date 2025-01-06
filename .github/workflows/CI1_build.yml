@@ -24,4 +24,4 @@ jobs:
       - name: Build Containers for Customer API w/Terraform
         run:  |
           docker build -t customer_api:prod --target production .
-          docker build -t customer_api:testingtf --target test .
+          docker build -t customer_api:testing --target test .

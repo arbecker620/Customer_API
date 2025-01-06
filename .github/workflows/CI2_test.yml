@@ -19,9 +19,9 @@ jobs:
     runs-on: [self-hosted,  Linux,  ARM64,  build_server]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Build Test Docker Container for Customer API
+      - name: list images built
         run:  |
-          docker build -t customer_api:testing --target test .
+          docker images
   run_tests:
       needs: 
         - build_test
